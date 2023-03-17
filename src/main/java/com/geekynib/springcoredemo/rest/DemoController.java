@@ -2,6 +2,7 @@ package com.geekynib.springcoredemo.rest;
 
 import com.geekynib.springcoredemo.common.Coach;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,17 +13,17 @@ public class DemoController {
     private Coach myCoach;
 
     //define a construtor for dependecy injection
-//    @Autowired
-//    public DemoController(Coach theCoach){
-//        myCoach=theCoach;
-//    }
+    @Autowired
+    public DemoController(@Qualifier("trackCoach") Coach theCoach){
+        myCoach=theCoach;
+    }
 
 
     //Adding setter Injection
-    @Autowired
-    public void doSomeStuff(Coach theCoach){
-      myCoach=theCoach;
-    }
+//    @Autowired
+//    public void doSomeStuff(Coach theCoach){
+//      myCoach=theCoach;
+//    }
     @GetMapping("/dailyworkout")
     public String getDailyWorkout(){
         return myCoach.getDailyWorkout();

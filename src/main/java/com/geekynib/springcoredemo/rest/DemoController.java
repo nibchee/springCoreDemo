@@ -14,7 +14,7 @@ public class DemoController {
 
     //define a construtor for dependecy injection
     @Autowired
-    public DemoController(@Qualifier("cricketCoach") Coach theCoach){
+    public DemoController(@Qualifier("swimCoach") Coach theCoach){
 
         System.out.println("In the costructor :"+getClass().getSimpleName());
         this.myCoach=theCoach;

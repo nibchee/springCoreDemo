@@ -12,16 +12,13 @@ public class DemoController {
     //define  a private field for the dependency
     private Coach myCoach;
 
-    private Coach anotherCoach;
-
     //define a construtor for dependecy injection
     @Autowired
-    public DemoController(@Qualifier("cricketCoach") Coach theCoach,@Qualifier("cricketCoach") Coach anotherCoach){
+    public DemoController(@Qualifier("cricketCoach") Coach theCoach){
 
         System.out.println("In the costructor :"+getClass().getSimpleName());
         this.myCoach=theCoach;
-        this.anotherCoach=anotherCoach;
-    }
+       }
 
 
     //Adding setter Injection
@@ -34,9 +31,6 @@ public class DemoController {
         return myCoach.getDailyWorkout();
     }
 
-    @GetMapping("/check")
-    public String check(){
-        return "Comparing beans: myCoach==anotherCoach"+(myCoach==anotherCoach);
-    }
+
 }
 
